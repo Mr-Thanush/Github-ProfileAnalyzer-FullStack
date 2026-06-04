@@ -1,16 +1,155 @@
-# React + Vite
+## GitHub Profile Analyzer (Frontend + Backend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application that analyzes GitHub user profiles and displays useful insights in a clean and responsive UI.
 
-Currently, two official plugins are available:
+The project is built using React + Redux Toolkit + Tailwind CSS on the frontend and Node.js + Express + MySQL on the backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+ - Analyze GitHub user profiles by username
+ - Fetch and display profile details in real time 
+ - State management using Redux Toolkit
+ - Responsive UI using Tailwind CSS
+ - REST API built with Express
+ - MySQL database integration
+ - Error handling and loading states
+ - Clean and scalable project structure
 
-## React Compiler
+## Tech Stack
+Frontend
+ - React (Vite)
+ - Redux Toolkit
+ - React Redux
+ - Tailwind CSS
+ - Axios
+ - React Toastify
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Backend
+   - Node.js
+   - Express.js
+   - MySQL
+   - Nodemon
+   - dotenv
+   - CORS
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure 
+```bash
+github-analyzer/
+
+│── controllers/
+
+├── frontend/
+
+│   ├── src/
+
+│   │   ├── components/
+
+│   │   ├── features/        # Redux slices
+
+│   │   ├── App.jsx
+
+│   │   └── main.jsx
+
+│   └── vite.config.js
+
+
+│── routes/
+
+│── config/
+
+|── index.js
+
+│
+
+└── README.md
+
+```
+
+
+##  Environment Variables
+```env
+PORT=8080
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=github_analyzer_profile
+```
+
+
+## Sql Cmds
+```sql
+create database github_analyzer_profile;
+
+use github_analyzer_profile;
+
+create table github_analyze_profiles(
+id INT AUTO_INCREMENT PRIMARY KEY,
+github_id BIGINT UNIQUE,
+username VARCHAR(200),
+name VARCHAR(200),
+bio TEXT,
+public_repos INT,
+followers INT,
+following INT,
+public_url VARCHAR(500),
+created_at DATETIME,
+analyze_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+select * from github_analyze_profiles 
+
+```
+
+## Running the Project Locally
+
+1. Clone the Repository
+   git clone https://github.com/Mr-Thanush/github-profile-analyzer.git
+
+   cd github-profile-analyzer
+
+2. Install Frontend Dependencies 
+    cd github-analyzer-frontend
+    npm install 
+    npm run dev
+   
+   Frontend will run at:http://localhost:5173
+
+
+3. Install Backend Dependencies
+   npm install
+   npm run server
+   
+   Backend will run at:http://localhost:5000
+
+
+## API Example
+  - Analyze GitHub Profile
+    POST /github/analyze/profile
+  Request Body
+     {
+  "username": "octocat"
+    }
+
+   Response (Example)
+      {
+  "name": "The Octocat",
+  "publicRepos": 8,
+  "followers": 5000,
+  "following": 9
+      }
+
+
+
+## Error Handling
+- Invalid GitHub username handling
+- API error messages using Toast notifications
+- loading.. during API calls
+
+
+##  Author
+Thanush V
+Aspiring MERN-Stack Developer
+Focused on MERN & backend development
+
+## License
+This project is licensed under the MIT License.
