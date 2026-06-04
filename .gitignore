@@ -1,0 +1,4 @@
+/node-modules
+/github-analyzer-frontend/node-modules
+/github-analyzer-frontend/dist
+.env
