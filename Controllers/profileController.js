@@ -43,10 +43,9 @@ export const analyzeProfile=async(req,res)=>{
         profile
     });
 }catch(error){
-    console.error('analyzeProfile error:', error.message || error, error.stack || 'no stack');
     res.status(500).json({
         success:false,
-        error:error.message || 'Internal Server Error'
+        error:error.message
     });
 }
 }
