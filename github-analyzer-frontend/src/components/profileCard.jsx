@@ -31,7 +31,7 @@ const ProfileCard=()=>{
 }
 
 
-    console.log(currentProfile); 
+    
 
     return(
                 <div
