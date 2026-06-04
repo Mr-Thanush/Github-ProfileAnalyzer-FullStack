@@ -34,23 +34,23 @@ app.use((req,res)=>{
 })
 
 
-app.listen(port,()=>{
+const server = app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
 });
 
-//unCought Exception Error
+// unCought Exception Error
 process.on('uncaughtException',(err)=>{
-    console.log(`Error : ${err.message}`);
-    console.log("Server Is ShuttingDown Due To Uncounght Exception Error");
-
+    console.error(`Uncaught Exception: ${err.message}`);
+    console.error(err.stack);
+    console.log("Server is shutting down due to uncaught exception.");
     process.exit(1);
-
 })
 
-//UnHandled Promise Rejection Error
+// Unhandled Promise Rejection Error
 process.on('unhandledRejection',(err)=>{
-    console.log(`Error : ${err.message}`);
-    console.log("Server Is ShuttingDown Due To Unhandled Promise Rejection Error");
+    console.error(`Unhandled Rejection: ${err?.message || err}`);
+    console.error(err?.stack);
+    console.log("Server is shutting down due to unhandled promise rejection.");
 
     server.close(()=>{
         process.exit(1);
