@@ -26,10 +26,10 @@ app.use('/github',profileRoute);
 
 
 //server static files
-app.use(express.static(path.join(__dirname,'./github-analyzer-frontend/dist')));
+app.use(express.static(path.join(__dirname,'../github-analyzer-frontend/dist')));
 app.use((req,res)=>{
     res.sendFile(
-        path.resolve(__dirname,'./github-analyzer-frontend/dist/index.html')
+        path.resolve(__dirname,'../github-analyzer-frontend/dist/index.html')
     )
 })
 
