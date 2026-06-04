@@ -14,8 +14,9 @@ dotenv.config();
 
 
 
-const port=process.env.PORT || 6060;
+
 const app=express();
+const port=process.env.PORT || 6060;
 
 //MiddleWare
 app.use(express.json());
@@ -24,13 +25,14 @@ app.use(cors());
 //routes
 app.use('/github',profileRoute);
 
+const frontendPath=path.resolve(__dirname,'github-analyzer-frontend/dist');
+app.use(express.static(frontendPath));
+
 
 //server static files
-app.use(express.static(path.join(__dirname,'./github-analyzer-frontend/dist')));
-app.use((req,res)=>{
-    res.sendFile(
-        path.resolve(__dirname,'./github-analyzer-frontend/dist/index.html')
-    )
+app.get("*",(req,res)=>{
+    if(req.path.startsWith('/github')) return res.status(404).end();
+    res.sendFile(path.resolve(frontendPath,'index.html'));
 })
 
 
