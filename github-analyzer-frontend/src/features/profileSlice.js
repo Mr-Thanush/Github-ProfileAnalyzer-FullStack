@@ -1,18 +1,13 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || ''
-})
-
 export const analyzeProfile=createAsyncThunk(
     '/profile/analyzeProfile',async(username,rejectWithValue)=>{
         try{
-            const responce=await api.post('/github/analyze/profiles',{username})
+            const responce=await axios.post('/github/analyze/profiles',{username})
             return responce.data
         } catch (error) {
-            const message = error.response?.data || error.message || 'Failed to Analyze Profile'
-            return rejectWithValue(message)
+            return rejectWithValue(error.response.data || 'Failed to Analyze Profile')
         }
     }
 )
@@ -20,11 +15,10 @@ export const analyzeProfile=createAsyncThunk(
 export const getStoredAllProfiles=createAsyncThunk(
     '/profile/getStoredAllProfiles',async(rejectWithValue)=>{
         try{
-            const responce=await api.post('/github/profiles');
+            const responce=await axios.post('/github/profiles');
             return responce.data
         } catch (error) {
-            const message = error.response?.data || error.message || 'Failed to Get All Stored Profiles'
-            return rejectWithValue(message)
+            return rejectWithValue(error.response.data || 'Failed to Get All Stored Profiles')
         }
     }
 )
