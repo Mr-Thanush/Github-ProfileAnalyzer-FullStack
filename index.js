@@ -30,7 +30,7 @@ app.use(express.static(frontendPath));
 
 
 //server static files
-app.get("*",(req,res)=>{
+app.get((req,res)=>{
     if(req.path.startsWith('/github')) return res.status(404).end();
     res.sendFile(path.resolve(frontendPath,'index.html'));
 })
