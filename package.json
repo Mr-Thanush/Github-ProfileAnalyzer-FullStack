@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "server": "nodemon index.js",
-    "build": "npm install && npm install --prefix github-analyzer-frontend && npm run build --prefix github-analyzer-frontend"
+    "build": "npm install --prefix github-analyzer-frontend && npm run build --prefix github-analyzer-frontend"
   },
   "keywords": [],
   "author": "",
