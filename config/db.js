@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-
 const pool=mysql.createPool(process.env.DB_URL);
 
 const testConnection = async()=>{
@@ -21,5 +20,7 @@ testConnection();
 
 
 
+
 export default pool
+
 

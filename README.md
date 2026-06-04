@@ -73,7 +73,10 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=yourpassword
 DB_NAME=github_analyzer_profile
+VITE_API_URL=http://localhost:6060
 ```
+
+If the frontend is deployed separately from the backend, set `VITE_API_URL` to your backend URL on Render or your hosting provider.
 
 
 ## Sql Cmds
